@@ -1,16 +1,14 @@
-package com.shasta;
-
-import com.shasta.threaded.MultiThreadedServer;
-
 /**
  * Multithreaded server that users can telnet into.
- *
- * @author Chandler Severson, Shasta Networks
- * @since 2019-12-10
- * <p>Made as a starter project for the 2019 Shasta Networks/SOU CS Club Hackathon.</p>
+ * <p>
+ * @author Michael Boyd
+ * @since 2019-04-27
  */
-public class TelnetServer {
+package com.shasta;
+import com.shasta.threaded.MultiThreadedServer;
 
+public class TelnetServer
+{
     /**
      * Port to listen on
      */
@@ -25,16 +23,20 @@ public class TelnetServer {
      * Entry point for the Telnet Server Program.
      * @param args N/A
      */
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         System.out.println(String.format("Starting server on port %d.", port));
 
         server = new MultiThreadedServer(port);
         Thread main = new Thread(server);
         main.start();
-        try {
-            //keep the server open indefinitely.
+        try
+        {
+            // Keep the server open indefinitely.
             main.join();
-        } catch (InterruptedException e) {
+        }
+        catch (InterruptedException e)
+        {
             e.printStackTrace();
         }
 
